@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0-only
 
-cameratree := $(srctree)/techpack/camera/drivers
+cameratree := $(srctree)/techpack/camera-legacy/$(BOARD_CONFIG_CAMERA_KERNEL_NAME)/drivers
 
 cam_include_dirs := $(shell dirname `find $(cameratree) -name '*.h'` | uniq)
 ccflags-y += $(addprefix -I,$(cam_include_dirs))
@@ -9,7 +9,7 @@ ifneq (,$(filter $(CONFIG_MSM_GLOBAL_SYNX), y m))
 ccflags-y += -I$(srctree)/drivers/media/platform/msm/synx
 endif
 
-ccflags-y += -I$(srctree)/techpack/camera/include/uapi/camera
+ccflags-y += -I$(srctree)/techpack/camera-legacy/$(BOARD_CONFIG_CAMERA_KERNEL_NAME)/include/uapi/camera
 ccflags-y += -I$(srctree)
 
 camera-y := \
